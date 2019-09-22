@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>个人简历</title>
+  <link rel="icon" href="./images/bitbug_favicon.ico">
+  <link rel="stylesheet" href="./css/jquery.fullPage.css">
+  <link rel="stylesheet" href="./css/animate.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+  <div class="tabbar" style="position: fixed;z-index: 99;">
+    <a href="javascript:;">个人信息</a>
+    <a href="javascript:;">技术掌握</a>
+    <a href="javascript:;">项目作品</a>
+    <a href="javascript:;">联系方式</a>
+  </div>
+  <div class="box">
+    <div class="section">
+      <div class="myInfo">
+        <div class="myPhoto animated fadeInLeft">
+          <img src="./images/my.png" class="animated rotateIn">
+        </div>
+        <div class="myDesc">
+          <p>
+            <strong class="animated fadeInLeft">姓　　名:</strong>
+            <span class="animated fadeInRight">宋超</span>
+          </p>
+          <p>
+            <strong class="animated fadeInLeft">政治面貌:</strong>
+            <span class="animated fadeInRight">中共党员</span>
+          </p>
+          <p>
+            <strong class="animated fadeInLeft">学　　历:</strong>
+            <span class="animated fadeInRight">本科</span>
+          </p>
+          <p>
+            <strong class="animated fadeInLeft">出　　生:</strong>
+            <span class="animated fadeInRight">1991年2月12日</span>
+          </p>
+          <p>
+            <strong class="animated fadeInLeft">家庭住址:</strong>
+            <span class="animated fadeInRight">成都市新都区三河街道</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="section">2</div>
+    <div class="section">
+      <div class="slide">横向的第1屏</div>
+      <div class="slide">横向的第2屏</div>
+      <div class="slide">横向的第3屏</div>
+      <div class="slide">横向的第4屏</div>
+    </div>
+    <div class="section">4</div>
+  </div>
+
+
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery.fullPage.min.js"></script>
+  <script>
+    $(function () {
+      // 初始化
+      $('.box').fullpage({
+        // 配置每一个屏幕的颜色
+        sectionsColor: ['skyblue','skyblue','skyblue','skyblue'],
+        // 配置垂直不进行居中显示
+        verticalCentered: false,
+        //是否显示轮播底部小圆点
+        slidesNavigation: true,
+        //是否配置左右控制的箭头
+        controlArrows: false,
+        // 配置小圆点
+        navigation: true,
+        lockAnchors: true,
+        controlArrows: true
+      });
+      
+      // 顶部导航
+      $('.tabbar a').on('click',function(){
+        let idx = $(this).index();
+        // 因为moveTo的方法是从第一张用1表示开始的
+        $.fn.fullpage.moveTo(idx+1)
+      });
+
+    })
+  </script>
+
+
+</body>
+
+</html>
