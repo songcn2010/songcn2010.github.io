@@ -1,0 +1,59 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.myPhoto {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: auto;
+  animation-duration: 1s;
+}
+.myPhoto img {
+  width: 200px;
+  display: block;
+}
+.myDesc {
+  text-align: center;
+}
+.myDesc p {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+.myDesc p:first-child strong {
+  animation-delay: 1s;
+}
+.myDesc p:nth-child(2) strong {
+  animation-delay: 2s;
+}
+.myDesc p:nth-child(3) strong {
+  animation-delay: 3s;
+}
+.myDesc p:nth-child(4) strong {
+  animation-delay: 4s;
+}
+.myDesc p:last-child strong {
+  animation-delay: 5s;
+}
+
+
+.myDesc p:first-child span {
+  animation-delay: 1.5s;
+}
+.myDesc p:nth-child(2) span {
+  animation-delay: 2.5s;
+}
+.myDesc p:nth-child(3) span {
+  animation-delay: 3.5s;
+}
+.myDesc p:nth-child(4) span {
+  animation-delay: 4.5s;
+}
+.myDesc p:last-child span {
+  animation-delay: 5.5s;
+}
