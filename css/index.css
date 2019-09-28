@@ -1,3 +1,29 @@
+body {
+  width: 100%;
+  min-width: 600px;
+}
+.tabbar {
+  width: 100%;
+  display: flex;
+  padding-top: 10px;
+  justify-content: flex-end;
+}
+.tabbar a {
+  min-width: 64px;
+  margin-right: 30px;
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  background-color: skyblue;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.7);
+}
+.tabbar a.active {
+  font-weight: 700;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,.5));
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -7,16 +33,18 @@
 .myPhoto {
   width: 200px;
   height: 200px;
-  border: 1px solid #fff;
-  border-radius: 50%;
   overflow: hidden;
+  border-radius: 50%;
   margin: auto;
   animation-duration: 1s;
+  box-shadow: 0 0  20px 1px #fff inset;
 }
 .myPhoto img {
   width: 200px;
   display: block;
 }
+
+
 .myDesc {
   text-align: center;
 }
@@ -40,8 +68,6 @@
 .myDesc p:last-child strong {
   animation-delay: 5s;
 }
-
-
 .myDesc p:first-child span {
   animation-delay: 1.5s;
 }
@@ -56,4 +82,18 @@
 }
 .myDesc p:last-child span {
   animation-delay: 5.5s;
+}
+
+#myTec {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.myTec {
+  min-width: 500px;
+  height: 500px;
+}
+.myOther {
+  min-width: 500px;
+  height: 500px;
 }
