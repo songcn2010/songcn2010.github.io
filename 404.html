@@ -13,13 +13,14 @@
 <body>
 
   <div class="tabbar" style="position: fixed;z-index: 99;">
-    <a href="javascript:;">个人信息</a>
+    <a href="javascript:;" class="active">个人信息</a>
     <a href="javascript:;">技术掌握</a>
     <a href="javascript:;">项目作品</a>
     <a href="javascript:;">联系方式</a>
   </div>
   <div class="box">
-    <div class="section">
+    <!-- 个人信息 -->
+    <div class="section active">
       <div class="myInfo">
         <div class="myPhoto animated fadeInLeft">
           <img src="./images/my.png" class="animated rotateIn">
@@ -43,12 +44,19 @@
           </p>
           <p>
             <strong class="animated fadeInLeft">家庭住址:</strong>
-            <span class="animated fadeInRight">成都市新都区三河街道</span>
+            <span class="animated fadeInRight">成都市新都区</span>
           </p>
         </div>
       </div>
     </div>
-    <div class="section">2</div>
+
+    <!-- 能力 -->
+    <div class="section">
+      <div id="myTec">
+        <div class="myTec" id='leftE'></div>
+        <div class="myOther" id="rightE"></div>
+      </div>
+    </div>
     <div class="section">
       <div class="slide">横向的第1屏</div>
       <div class="slide">横向的第2屏</div>
@@ -61,12 +69,13 @@
 
   <script src="./js/jquery.min.js"></script>
   <script src="./js/jquery.fullPage.min.js"></script>
+  <script src="./js/echarts.min.js"></script>
   <script>
     $(function () {
       // 初始化
       $('.box').fullpage({
         // 配置每一个屏幕的颜色
-        sectionsColor: ['skyblue','skyblue','skyblue','skyblue'],
+        sectionsColor: ['skyblue', 'skyblue', 'skyblue', 'skyblue'],
         // 配置垂直不进行居中显示
         verticalCentered: false,
         //是否显示轮播底部小圆点
@@ -78,13 +87,101 @@
         lockAnchors: true,
         controlArrows: true
       });
-      
+
       // 顶部导航
-      $('.tabbar a').on('click',function(){
-        let idx = $(this).index();
+      $('.tabbar a').on('click', function () {
+        let idx = $(this).index() + 1;
         // 因为moveTo的方法是从第一张用1表示开始的
-        $.fn.fullpage.moveTo(idx+1)
+        $.fn.fullpage.moveTo(idx);
+        $(this).addClass('active animated').siblings().removeClass('active');
       });
+
+      //第二页初始化echart
+      let myTec = echarts.init(document.getElementById('leftE'));
+      let option1 = {
+        title: {
+          text: '主要技能',
+          x: 'center' //这里控制标题的位置，也可以用方位名词
+        },
+        tooltip: {
+          trigger: 'item',
+          formatter: "{b}"
+        },
+        legend: {
+          orient: 'vertical',
+          top: '50',
+          left: '0',
+          data: ['页面布局', 'php', 'node', 'jQuery', 'Vue', 'React', '小程序']
+        },
+        series: [{
+          name: '',
+          type: 'pie',
+          radius: '65%',
+          center: ['55%', '60%'],
+          data: [{
+              value: 1,
+              name: '页面布局',
+              lk: "熟练"
+            },
+            {
+              value: 1,
+              name: 'php'
+            },
+            {
+              value: 1,
+              name: 'node'
+            },
+            {
+              value: 1,
+              name: 'jQuery'
+            },
+            {
+              value: 1,
+              name: 'Vue'
+            },
+            {
+              value: 1,
+              name: 'React'
+            },
+            {
+              value: 1,
+              name: '小程序'
+            }
+          ],
+          itemStyle: {
+            emphasis: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }]
+      }
+      myTec.setOption(option1);
+
+      let myOther = echarts.init(document.getElementById('rightE'));
+      let option2 = {
+        title: {
+          text: '其他使用',
+          x: 'center'
+        },
+        legend: {},
+        tooltip: {
+          formatter: '{b}掌握程度{c}%'
+        },
+        xAxis: {
+          type: 'category',
+          data: ['ElementUI', 'semantic-ui', 'WEUI', 'Bootstrap', 'Express', 'Mysql', 'git'],
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          data: [80, 60, 60, 90, 70, 80, 80],
+          type: 'bar'
+        }]
+      };
+      myOther.setOption(option2);
 
     })
   </script>
