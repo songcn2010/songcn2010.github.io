@@ -85,7 +85,11 @@
         // 配置小圆点
         navigation: true,
         lockAnchors: true,
-        controlArrows: true
+        controlArrows: true,
+        onLeave: function(a,index){
+          console.log(index);
+          $('.tabbar a').eq(index-1).addClass('active animated').siblings().removeClass('active');
+        }
       });
 
       // 顶部导航
